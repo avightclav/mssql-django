@@ -431,6 +431,8 @@ class DatabaseWrapper(BaseDatabaseWrapper):
         # inserting into tables with triggers causes errors. See issue #130
         if (options.get('return_rows_bulk_insert', False)):
             self.features_class.can_return_rows_from_bulk_insert = True
+        else:
+            self.features_class.can_return_rows_from_bulk_insert = False
 
         val = self.get_system_datetime
         if isinstance(val, str):
